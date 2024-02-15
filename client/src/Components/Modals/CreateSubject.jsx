@@ -1,6 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 const CreateSubject = ({ onClose }) => {
+  const [subjectName, setSubjectName] = useState("");
+  const [classroom, setClassroom] = useState("");
+  const [teacherName, setTeacherName] = useState("");
+
+  const generateLink = () => {
+    const uniqueId = uuidv4();
+    return `https://example.com/classroom/${uniqueId}`;
+  };
+
+  const handleCreateSubject = () => {
+    const link = generateLink();
+
+    // Implement your logic to store the subject details and link
+    // You can use state management (e.g., Redux, React Context, etc.) for this
+
+    console.log("Subject Name:", subjectName);
+    console.log("Classroom:", classroom);
+    console.log("Teacher Name:", teacherName);
+    console.log("Generated Link:", link);
+
+    onClose();
+  };
+
   return (
     <div>
       <div className="flex justify-center items-center fixed inset-0 bg-purple-300 bg-opacity-30 backdrop-blur-sm">
@@ -27,21 +51,30 @@ const CreateSubject = ({ onClose }) => {
               <input
                 type="text"
                 placeholder="Subject Name"
+                value={subjectName}
+                onChange={(e) => setSubjectName(e.target.value)}
                 className="block w-full border border-black rounded-lg p-2 my-5 text-sm"
               />
               <input
                 type="text"
                 placeholder="Class"
+                value={classroom}
+                onChange={(e) => setClassroom(e.target.value)}
                 className="block w-full border border-black rounded-lg p-2 my-5 text-sm"
               />
               <input
                 type="text"
                 placeholder="Subject Teacher Name"
+                value={teacherName}
+                onChange={(e) => setTeacherName(e.target.value)}
                 className="block w-full border border-black rounded-lg p-2 my-5 text-sm"
               />
             </form>
             <div className="flex justify-center">
-              <button className="bg-primary text-white shadow-lg p-3 flex items-center gap-2 rounded-lg hover:bg-purple-400">
+              <button
+                onClick={handleCreateSubject}
+                className="bg-primary text-white shadow-lg p-3 flex items-center gap-2 rounded-lg hover:bg-purple-400"
+              >
                 Create Subject
               </button>
             </div>

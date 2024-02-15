@@ -1,6 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 
 const JoinClassrooms = ({ onClose }) => {
+  const [classCode, setClassCode] = useState("");
+  const handleJoinClassroom = () => {
+    // Implement your logic to handle joining the classroom
+    // You can use the classCode and navigate to the corresponding classroom
+
+    console.log("Joining Classroom with Class Code:", classCode);
+
+    onClose();
+  };
+
   return (
     <div>
       <div>
@@ -28,11 +38,16 @@ const JoinClassrooms = ({ onClose }) => {
                 <input
                   type="text"
                   placeholder="Class code"
+                  value={classCode}
+                  onChange={(e) => setClassCode(e.target.value)}
                   className="block w-full border border-black rounded-lg p-2 my-5 text-sm"
                 />
               </form>
               <div className="flex justify-center">
-                <button className="bg-primary text-white shadow-lg p-4 flex items-center gap-2 rounded-lg hover:bg-purple-400 my-4 ">
+                <button
+                  onClick={handleJoinClassroom}
+                  className="bg-primary text-white shadow-lg p-4 flex items-center gap-2 rounded-lg hover:bg-purple-400 my-4"
+                >
                   Join Classroom
                 </button>
               </div>
