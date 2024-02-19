@@ -1,6 +1,5 @@
 import React from "react";
-import CalendarBox from "../widgets/CalendarBox";
-
+import CalendarBox from "../../widgets/CalendarBox";
 const RightSidebar = () => {
   return (
     <div>

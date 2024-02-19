@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { girlboypng } from "../assets";
+import { motion } from "framer-motion";
+import { slideFromLeft } from "../constants/style";
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -82,24 +84,30 @@ export default function LoginPage() {
   };
 
   return (
-    <div>
-      <div className="relative h-screen flex bg-primary">
-        <div className="flex-none w-1/3">
-          <p className="font-bold text-3xl text-white">ACADEMIX</p>
+    <motion.div variants={slideFromLeft} initial="hidden" animate="visible">
+      <div className="relative h-screen flex">
+        <div className="flex-none w-5/12">
+          <p className="font-semibold m-3 font-sans text-3xl text-primary">
+            ACADEMIX
+          </p>
         </div>
+        <img
+          className="flex mt-48 w-96 ml-5  absolute"
+          src={girlboypng}
+          alt=""
+        />
 
         {/* Right Column with White Card */}
+
         <div
-          className="flex-1 flex items-center  justify-center bg-white p-8 shadow-lg rounded-tl-2xl"
+          className=" flex-1 flex items-center justify-center bg-primary p-8 shadow-lg rounded-tl-2xl"
           style={{
             borderTopLeftRadius: "10rem",
             borderBottomLeftRadius: "10rem",
           }}
         >
-          <img className="flex mt-30 w-100 -ml-40" src={girlboypng} alt="" />
-
-          <div className="flex-1 flex items-center justify-center -ml-60  ">
-            <div className="bg-gray-50 p-12 shadow-primary shadow-md rounded-2xl  ">
+          <div className="flex-1 flex items-center justify-center   ">
+            <motion.div className="card bg-white border p-12 shadow-primary shadow-md rounded-3xl  ">
               <p className="text-center mb-10 text-2xl font-bold">Log in</p>
               <form onSubmit={handleSubmit}>
                 <div className="mb-4">
@@ -162,10 +170,10 @@ export default function LoginPage() {
                   </Link>
                 </p>
               </form>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

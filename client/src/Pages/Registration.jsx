@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { girlboypng, student, teacher } from "../assets";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { slideFromLeft } from "../constants/style";
+
 export default function Registration() {
   const [formData, setFormData] = useState({
     username: "",
@@ -111,24 +114,28 @@ export default function Registration() {
   };
 
   return (
-    <div>
-      <div className="relative h-screen flex bg-primary">
-        <div className="flex-none w-1/3">
-          <p className="font-bold text-3xl text-white">ACADEMIX</p>
+    <motion.div variants={slideFromLeft} initial="hidden" animate="visible">
+      <div className="relative h-screen flex ">
+        <div className="flex-none w-5/12">
+          <p className="font-semibold m-3 font-sans text-3xl text-primary">
+            ACADEMIX
+          </p>
         </div>
-
+        <img
+          className="flex mt-48 w-96 ml-5  absolute"
+          src={girlboypng}
+          alt=""
+        />
         {/* Right Column with White Card */}
         <div
-          className="flex-1 flex items-center justify-center bg-white p-8 shadow-lg rounded-tl-2xl"
+          className="flex-1 flex items-center justify-center  bg-primary p-8 shadow-lg rounded-tl-xl"
           style={{
             borderTopLeftRadius: "10rem",
             borderBottomLeftRadius: "10rem",
           }}
         >
-          <img className="flex mt-30 w-100 -ml-40" src={girlboypng} alt="" />
-
-          <div className="flex-1 flex items-center justify-center -ml-60 ">
-            <div className="bg-gray-50 p-12 shadow-primary shadow-sm rounded-2xl">
+          <div className="flex-1 flex items-center justify-center  ">
+            <div className="bg-white p-9 ml-52 shadow-primary shadow-sm rounded-2xl">
               <p className="text-center mb-10 text-2xl font-bold">Sign up</p>
               <form onSubmit={handleSubmit}>
                 <div className="mb-4">
@@ -283,7 +290,7 @@ export default function Registration() {
                       formData.userType == "student"
                         ? "border-4 border-primary"
                         : ""
-                    } border border-black p-4  rounded-md shadow-md text-center h-24 cursor-pointer`}
+                    } border border-gray-400 p-4  rounded-md shadow-md text-center h-24 cursor-pointer`}
                   >
                     <img src={student} className=" ml-4 text-4xl h-10 " />
                     <p className="text-lg font-semibold">Student</p>
@@ -295,7 +302,7 @@ export default function Registration() {
                       formData.userType == "teacher"
                         ? "border-4 border-primary"
                         : ""
-                    } border border-black p-4  rounded-md shadow-md text-center h-24 cursor-pointer`}
+                    } border border-gray-400 p-4  rounded-md shadow-md text-center h-24 cursor-pointer`}
                   >
                     <img src={teacher} className="ml-4 text-4xl h-10" />
                     <p className=" text-lg font-semibold">Teacher</p>
@@ -320,6 +327,6 @@ export default function Registration() {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
